@@ -1,0 +1,302 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #e7eaf6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+.box {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    position: relative;
+    height: 520px;
+    background-color: white;
+    overflow: hidden;
+    margin: 0 40px; 
+    border-radius: 20px;
+}
+
+@media (min-width: 777px) {
+    .box {
+        min-width: 90%;
+    }
+}
+
+@media (min-width: 1199px) {
+    .box {
+        min-width: 80%;
+    }
+}
+
+.box .btn-R,
+.box .btn-L {
+    display: none;
+} 
+
+@media (max-width: 776px) { 
+    .box {
+        width: 500px;
+        margin: 0 40px; 
+        display: inline-block;
+        padding-top: 10px;
+    }
+    .box .wel-login,
+    .box .wel-registration,
+    .box::before {
+        display: none;
+    }
+    .box .login-box,
+    .box .registration-box {
+        position: absolute;
+        width: 100%;
+    }
+    .registration-box .media-icons a,
+    .login-box .media-icons a {
+        border: none;
+    }
+    .box .registration-box {
+        left: -100%;
+    }
+    .box .btn-R,
+    .box .btn-L {
+        position: absolute;
+        padding: 15px 30px;
+        background-color: #0a66c2;
+        color: white;
+        border: none;
+        transition: 0.5s;
+        z-index: 1;
+        display: block;
+    }
+    .box .btn-R:hover,
+    .box .btn-L:hover {
+        cursor: pointer;
+    }
+    .box .btn-L {
+        top: 0;
+        right: -100px;
+    }
+    .box .btn-R.play {
+        right: 0;
+    }
+    .box .btn-R {
+        top: 0;
+        left: 0;
+    }
+    .box .btn-R.hidden {
+        left: -110px;
+    }
+}
+
+.box::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #6d8bff;
+    border-radius: 150px;
+    z-index: 1;
+    left: -50%;
+    transition: 0.5s;
+}
+.box.move::before {
+    transform: translateX(100%);
+}
+.box.back::before {
+    transform: translateX(0%);
+}
+
+.login-box ,
+.registration-box {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input{
+    height: 48px;
+    background-color: #f1f2f4;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #374151;
+    padding: 15px;
+    border: none;
+}
+
+.login-box form input {
+    margin-bottom: 30px;
+} 
+
+.registration-box form input {
+    margin-bottom: 25px;
+}
+
+form input:not(input[type="submit"]) {
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.12), inset -2px -2px 6px rgba(255, 255, 255, 0.9);
+}
+
+input:focus {
+    outline: none;
+}
+
+.login-box span {
+    padding-bottom: 30px;
+}
+
+.login-box span a {
+    color: #374151;
+    text-decoration: none;
+}
+
+form input[type="submit"] {
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #608bff;
+    transition: 0.5s;
+}
+
+form input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #3b6df0;
+}
+
+
+.box p {
+    color: #374151;
+}
+
+.registration-box .media-icons,
+.login-box .media-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.registration-box .media-icons i,
+.login-box .media-icons i {
+    font-size: 24px;
+    color: #374151;
+}
+
+.media-icons a {
+    width: 50px;
+    height: 50px;
+    transition: 0.3s;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.media-icons .f:hover {
+    background-color: #1877f2;
+    border: none;
+}
+.media-icons .f:hover i {
+    color: #fff;
+}
+
+.media-icons .l:hover {
+    background-color: #0a66c2;
+    border: none;
+}
+.media-icons .l:hover i {
+    color: #fff;
+}
+.media-icons .g:hover {
+    background-color: #fff;
+    border: none;
+    border: 1px solid #dadce0;
+}
+.media-icons .g:hover i {
+    color: #4285f4;
+}
+.media-icons .gh:hover {
+    background-color: #181717;
+    border: none;
+}
+.media-icons .gh:hover i {
+    color: #fff;
+}
+.wel-login,
+.wel-registration {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.wel-registration {
+    transform: translateX(200%);
+}
+
+
+.wel-login p,
+.wel-registration p {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.wel-login button,
+.wel-registration button {
+    background-color: #608bff;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 15px 45px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.wel-login button:hover,
+.wel-registration button:hover {
+    background-color: #3b6ef0cb;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #ffffff;
+}
